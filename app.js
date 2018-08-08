@@ -28,21 +28,27 @@ mongoose.connection.openUri('mongodb://localhost:27017/HospitalDB', (err, res) =
 
 // importar rutas
 
-var approutes = require('./routes/mainRoute');
-var usuarioroutes = require('./routes/usuario.routes');
+var rutaPrincipal = require('./routes/mainRoute');
+var hopitalesRoutes = require('./routes/hospitales.routes');
+var Busquedas = require('./routes/busquedas');
 var login = require('./routes/login');
+var medicos = require('./routes/medicos');
+var usuarios = require('./routes/usuario.routes');
+var upload = require('./routes/upload');
+var imagenes = require('./routes/imagenes');
 
 
 
 //rutas 
 // definir un milderware que es algo que se ejecuta antes de que se resulevan otras rutas
-
-app.use('/usuario', usuarioroutes);
+app.use('/upload', upload);
+app.use('/usuario', usuarios);
+app.use('/medico', medicos);
 app.use('/login', login);
-app.use('/', approutes);
-
-
-
+app.use('/busqueda', Busquedas);
+app.use('/hospital', hopitalesRoutes);
+app.use('/imagen', imagenes);
+app.use('/', rutaPrincipal);
 // escuchar peticiones
 
 app.listen(3000, () => {

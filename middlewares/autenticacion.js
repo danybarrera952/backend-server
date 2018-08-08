@@ -21,11 +21,13 @@ exports.varificaToken = function(req, res, next) {
             return res.status(401).json({
                 ok: false,
                 mensaje: 'Token incorrecto',
-                errors: err
+                errors: err,
 
             });
         }
 
         req.usuario = decoded.usuario;
+        req.hospital = decoded.hospital;
+        next();
     });
 }
