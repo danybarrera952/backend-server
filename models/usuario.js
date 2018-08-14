@@ -18,7 +18,8 @@ var usuarioSchema = new Schema({
     email: { type: String, unique: true, required: [true, 'El Correo es Necesario'] },
     password: { type: String, required: [true, 'El password es Necesario'] },
     img: { type: String, required: false },
-    role: { type: String, required: true, default: 'USER_ROLE', enum: rolesvalidos }
+    role: { type: String, required: true, default: 'USER_ROLE', enum: rolesvalidos },
+    google:{type:Boolean,default:false}
 
 });
 
